@@ -194,7 +194,7 @@ function App() {
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="bg-blue-50 p-4 rounded-lg text-center">
                 <p className="text-2xl font-bold text-blue-700">
-                  {selectedLinkData.click_count}
+                  {selectedLinkData.clicks}
                 </p>
                 <p className="text-xs text-blue-500 uppercase">Total Clicks</p>
               </div>

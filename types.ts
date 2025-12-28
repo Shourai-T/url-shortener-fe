@@ -12,7 +12,7 @@ export interface CreateLinkResponse {
 export interface LinkItem {
   url: string;           // URL gốc
   short_code: string;    // Mã rút gọn
-  click_count: number;   // Số lượt click
+  clicks: number;   // Số lượt click
   created_at: string;    // Thời gian tạo (ISO String)
   expires_at?: string | null;
 }
