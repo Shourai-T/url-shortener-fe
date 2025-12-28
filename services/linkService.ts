@@ -39,5 +39,14 @@ export const linkService = {
       },
     });
     return handleResponse<LinkItem>(response);
+  },
+  deleteLink: async (code: string): Promise<void> => {
+    const response = await fetch(`${API_BASE_URL}/api/links/${code}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' })) as ApiError;
+        throw new Error(errorData.error || `HTTP Error: ${response.status}`);
+    }
   }
 };

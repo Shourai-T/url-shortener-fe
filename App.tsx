@@ -67,6 +67,18 @@ function App() {
     fetchLinks(1); // Refresh list on creation
   };
 
+  const handleDelete = async (code: string) => {
+    if (!window.confirm("Are you sure you want to delete this link?")) return;
+
+    try {
+      await linkService.deleteLink(code);
+      fetchLinks(page); // Refresh current page
+    } catch (error) {
+      console.error("Failed to delete link", error);
+      alert("Failed to delete link");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       {/* Header / Hero */}
@@ -132,6 +144,7 @@ function App() {
               links={links}
               isLoading={loading}
               onViewStats={handleStatsOpen}
+              onDelete={handleDelete}
             />
           </div>
 

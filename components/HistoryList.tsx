@@ -1,18 +1,20 @@
 import React from "react";
 import { LinkItem } from "../types";
 import { API_BASE_URL } from "../constants";
-import { Copy, ExternalLink, BarChart2 } from "lucide-react";
+import { Copy, ExternalLink, BarChart2, Trash2 } from "lucide-react";
 
 interface HistoryListProps {
   links: LinkItem[];
   isLoading: boolean;
   onViewStats: (code: string) => void;
+  onDelete: (code: string) => void;
 }
 
 const HistoryList: React.FC<HistoryListProps> = ({
   links,
   isLoading,
   onViewStats,
+  onDelete,
 }) => {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -140,6 +142,13 @@ const HistoryList: React.FC<HistoryListProps> = ({
                         title="Analytics"
                       >
                         <BarChart2 size={18} />
+                      </button>
+                      <button
+                        onClick={() => onDelete(link.short_code)}
+                        className="text-gray-400 hover:text-red-600 transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 size={18} />
                       </button>
                       <a
                         href={fullShortLink}
